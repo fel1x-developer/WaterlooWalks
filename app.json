@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "WATIsGrass",
-    "slug": "watisgrass",
+    "name": "WaterlooWalks",
+    "slug": "waterloowalks",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "watisgrass",
+    "scheme": "waterloowalks",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -43,7 +43,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "b096744f-2a14-43b4-b8d7-8a1cc59b6c5d"
+        "projectId": "ffe8f8cf-08c2-43fc-b16d-6bf69de1eb75"
       }
     },
     "owner": "minsoochoo"

@@ -216,7 +216,7 @@ export default function Index() {
 
       {/* Floating Title */}
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>WATIsGrass</Text>
+        <Text style={styles.title}>WaterlooWalks</Text>
         <Text style={styles.subtitle}>UW Tunnel Navigation</Text>
       </View>
 

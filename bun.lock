@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "watisgrass",
+      "name": "waterloowalks",
       "dependencies": {
         "@datastructures-js/priority-queue": "^6.3.4",
         "@expo/vector-icons": "^15.0.2",

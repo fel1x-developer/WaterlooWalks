@@ -1,8 +1,8 @@
-# Privacy Policy for WATIsGrass
+# Privacy Policy for WaterlooWalks
 
 **Effective Date:** 09/11/2025
 
-At WATIsGrass, we respect your privacy and are committed to protecting any personal information you choose to share with us. This privacy policy outlines our practices regarding the collection, use, and disclosure of your information.
+At WaterlooWalks, we respect your privacy and are committed to protecting any personal information you choose to share with us. This privacy policy outlines our practices regarding the collection, use, and disclosure of your information.
 
 ## 1. Information We Collect
 
