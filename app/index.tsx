@@ -30,6 +30,12 @@ import { GeoJson } from "../src/algorithm/types";
 
 const geoJson = geoJsonData as GeoJson;
 
+const mapTypeOptions = [
+  { label: "Standard", value: "standard" as const },
+  { label: "Satellite", value: "satellite" as const },
+  { label: "Hybrid", value: "hybrid" as const },
+];
+
 export default function Index() {
   const UWMap = useMemo(() => new Dijkstra(new AdjacencyList(geoJson)), []);
   const startEndLocations = useMemo(getStartEndLocations, []);
@@ -45,6 +51,9 @@ export default function Index() {
   const [endFloor, setEndFloor] = useState<string | null>(null);
   const [tunnellingPreference, setTunnellingPreference] = useState<string>(
     "COMPARE_BY_TIME_OUTSIDE_THEN_TIME",
+  );
+  const [mapType, setMapType] = useState<"standard" | "satellite" | "hybrid">(
+    "standard",
   );
 
   const [hasRoute, setHasRoute] = useState(false);
@@ -195,6 +204,7 @@ export default function Index() {
         hasRoute={hasRoute}
         route={routePolylines}
         style={styles.map}
+        mapType={mapType}
       />
 
       {/* Current Location Marker */}
@@ -375,6 +385,27 @@ export default function Index() {
 
             <View style={styles.section}>
               <Text style={styles.sectionTitle}>⚙️ Preferences</Text>
+
+              <View style={styles.inputGroup}>
+                <Text style={styles.label}>Map Type</Text>
+                <TouchableOpacity
+                  style={styles.pickerButton}
+                  onPress={() =>
+                    showPicker(mapTypeOptions, mapType, (value) =>
+                      setMapType(value as "standard" | "satellite" | "hybrid"),
+                    )
+                  }
+                >
+                  <Text style={styles.pickerButtonText}>
+                    {getDisplayValue(
+                      mapTypeOptions,
+                      mapType,
+                      "Select map type...",
+                    )}
+                  </Text>
+                  <Text style={styles.pickerArrow}>▼</Text>
+                </TouchableOpacity>
+              </View>
 
               <View style={styles.inputGroup}>
                 <Text style={styles.label}>Tunnelling Preference</Text>

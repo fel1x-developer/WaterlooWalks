@@ -8,6 +8,7 @@ interface WATMapViewProps {
   hasRoute: boolean;
   route?: [number, number][][];
   style?: any;
+  mapType?: "standard" | "satellite" | "hybrid";
 }
 
 const UW_CAMPUS_REGION: Region = {
@@ -37,6 +38,7 @@ export default function WATMapView({
   hasRoute,
   route,
   style,
+  mapType = "standard",
 }: WATMapViewProps) {
   const basePolylines = useMemo(() => {
     return (
@@ -76,7 +78,7 @@ export default function WATMapView({
     <MapView
       style={[styles.map, style]}
       initialRegion={UW_CAMPUS_REGION}
-      mapType="standard"
+      mapType={mapType}
     >
       {basePolylines.map((polyline) => (
         <Polyline
