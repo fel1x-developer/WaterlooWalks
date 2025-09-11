@@ -4,13 +4,17 @@ import { GraphLocation } from "../algorithm/dijkstra";
 
 interface DirectionsListItemProps {
   graphLocation: GraphLocation;
+  previousGraphLocation: GraphLocation;
   order: number;
 }
 
 export default function DirectionsListItem({
   graphLocation,
+  previousGraphLocation,
   order,
 }: DirectionsListItemProps) {
+  const segmentDistance =
+    graphLocation.distance - previousGraphLocation.distance;
   return (
     <View style={styles.container}>
       <View style={styles.orderContainer}>
@@ -20,9 +24,9 @@ export default function DirectionsListItem({
         <Text style={styles.directionText}>
           {graphLocation.toDirectionsString()}
         </Text>
-        {graphLocation.distance > 0 && (
+        {segmentDistance > 0 && (
           <Text style={styles.distanceText}>
-            {Math.round(graphLocation.distance)}m
+            {Math.round(segmentDistance)}m
           </Text>
         )}
       </View>

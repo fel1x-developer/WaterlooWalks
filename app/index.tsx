@@ -481,6 +481,11 @@ export default function Index() {
                   <DirectionsListItem
                     key={idx}
                     graphLocation={graphLocation}
+                    previousGraphLocation={
+                      idx === 0
+                        ? route.graphLocations[0]
+                        : route.graphLocations[idx]
+                    }
                     order={idx + 1}
                   />
                 ))}
