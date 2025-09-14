@@ -104,7 +104,7 @@ export class AdjacencyList {
       ) as GeoJsonStairs[]
     ).forEach((f) => {
       const coord = new Coordinate(f.geometry.coordinates);
-      const buildingFloors = (f.properties.connections ?? []).map(
+      const buildingFloors = f.properties.connections.map(
         (connection: any) => new BuildingFloor(connection),
       );
       for (let i = 0; i < buildingFloors.length; i++) {
