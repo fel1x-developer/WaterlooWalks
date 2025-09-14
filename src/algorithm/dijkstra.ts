@@ -333,8 +333,7 @@ export class Dijkstra {
     pq.push(new GraphLocation(start, [start.coordinate.toArray()]));
     this._setDistance(start, 0);
     while (!pq.isEmpty()) {
-      const curr = pq.pop();
-      if (!curr) continue;
+      const curr = pq.pop()!;
       if (curr.location.equals(end)) return new Route(curr);
       this.adjList.get(curr.location).forEach((edge) => {
         if (curr.distance + edge.length < this._getDistance(edge.end)) {

@@ -18,17 +18,15 @@ const UW_CAMPUS_REGION: Region = {
   longitudeDelta: 0.01,
 };
 
-const getPolylineColor = (pathType: string): string => {
+const getPolylineColor = (
+  pathType: Exclude<GeoJsonLine["properties"]["type"], "walkway">,
+): string => {
   switch (pathType) {
     case "tunnel":
       return "#0066CC";
     case "bridge":
       return "#CC6600";
     case "hallway":
-      return "#666666";
-    case "walkway":
-      return "#00AA00";
-    default:
       return "#666666";
   }
 };
@@ -54,7 +52,12 @@ export default function WATMapView({
           longitude: coord[0],
         }),
       ),
-      strokeColor: getPolylineColor(feature.properties.type),
+      strokeColor: getPolylineColor(
+        feature.properties.type as Exclude<
+          GeoJsonLine["properties"]["type"],
+          "walkway"
+        >,
+      ),
       strokeWidth: 3,
       strokeOpacity: hasRoute ? 0.25 : 1,
     }));
