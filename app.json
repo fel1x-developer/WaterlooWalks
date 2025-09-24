@@ -13,18 +13,6 @@
       "supportsTablet": true,
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
-      },
-      "preview": {
-        "ios": {
-          "simulator": true
-        }
-      },
-      "development": {
-        "developmentClient": true,
-        "distribution": "internal",
-        "ios": {
-          "simulator": true
-        }
       }
     },
     "android": {

@@ -14,8 +14,11 @@
   },
   "dependencies": {
     "@datastructures-js/priority-queue": "^6.3.4",
+    "@expo/metro-runtime": "~6.1.2",
     "@react-native-picker/picker": "2.11.1",
     "expo": "^54.0.10",
+    "expo-constants": "~18.0.9",
+    "expo-linking": "~8.0.8",
     "expo-location": "^19.0.7",
     "expo-router": "^6.0.8",
     "expo-splash-screen": "^31.0.10",
@@ -25,7 +28,8 @@
     "react-dom": "19.1.0",
     "react-native": "^0.81.4",
     "react-native-maps": "1.20.1",
-    "react-native-safe-area-context": "^5.6.1"
+    "react-native-safe-area-context": "^5.6.1",
+    "react-native-screens": "~4.16.0"
   },
   "devDependencies": {
     "@testing-library/jest-native": "^5.4.3",
