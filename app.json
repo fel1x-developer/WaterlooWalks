@@ -9,7 +9,23 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.minsoochoo.waterloowalks",
+      "supportsTablet": true,
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "preview": {
+        "ios": {
+          "simulator": true
+        }
+      },
+      "development": {
+        "developmentClient": true,
+        "distribution": "internal",
+        "ios": {
+          "simulator": true
+        }
+      }
     },
     "android": {
       "adaptiveIcon": {
