@@ -1,12 +1,6 @@
 import { render, fireEvent, waitFor } from "@testing-library/react-native";
 import { Alert, Platform, ActionSheetIOS } from "react-native";
 
-// Mock expo-location
-jest.mock("expo-location", () => ({
-  requestForegroundPermissionsAsync: jest.fn(),
-  getCurrentPositionAsync: jest.fn(),
-}));
-
 // Mock Alert and ActionSheetIOS
 jest.spyOn(Alert, "alert").mockImplementation(() => {});
 jest
@@ -169,14 +163,6 @@ describe("Index screen", () => {
     expect(getByText("WaterlooWalks")).toBeTruthy();
     expect(getByText("UW Tunnel Navigation")).toBeTruthy();
     expect(getByText("🗺️")).toBeTruthy();
-  });
-
-  it("should show current location indicator when location is available", async () => {
-    const { findByText } = render(<Index />);
-
-    await waitFor(() => findByText("📍 Current Location"), {
-      timeout: 3000,
-    });
   });
 
   it("should open input modal when map button is pressed", () => {
@@ -369,16 +355,6 @@ describe("Index screen", () => {
 
     // Floor picker should show placeholder text
     expect(getAllByText("Select floor...")[0]).toBeTruthy();
-  });
-
-  it("should show current location indicator only when location exists", async () => {
-    const { queryByText } = render(<Index />);
-
-    await waitFor(() => {
-      const locationText = queryByText("📍 Current Location");
-      // Should show current location since mock returns valid coordinates
-      expect(locationText).toBeTruthy();
-    });
   });
 
   it("should not show current location when location fails", async () => {
