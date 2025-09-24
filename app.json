@@ -12,7 +12,8 @@
       "bundleIdentifier": "com.minsoochoo.waterloowalks",
       "supportsTablet": true,
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSLocationWhenInUseUsageDescription": "This app needs access to your location to show your current position on the map."
       }
     },
     "android": {

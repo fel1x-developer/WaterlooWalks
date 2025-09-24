@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import {
   View,
   Text,
@@ -12,7 +12,6 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
-import * as Location from "expo-location";
 
 import WATMapView from "../src/components/MapView";
 import DirectionsListItem from "../src/components/DirectionsListItem";
@@ -60,8 +59,6 @@ export default function Index() {
   const [route, setRoute] = useState<Route | null>(null);
   const [showInput, setShowInput] = useState(false);
   const [showDirections, setShowDirections] = useState(false);
-  const [currentLocation, setCurrentLocation] =
-    useState<Location.LocationObject | null>(null);
 
   const startFloorOptions = useMemo(
     () => getFloorOptions(buildingFloorOptions, startBuilding),
@@ -71,20 +68,6 @@ export default function Index() {
     () => getFloorOptions(buildingFloorOptions, endBuilding),
     [buildingFloorOptions, endBuilding],
   );
-
-  // Request location permission and get current location
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        console.log("Permission to access location was denied");
-        return;
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setCurrentLocation(location);
-    })();
-  }, []);
 
   const startLocation = useMemo(() => {
     if (!startBuilding || !startFloor) return null;
@@ -206,13 +189,6 @@ export default function Index() {
         style={styles.map}
         mapType={mapType}
       />
-
-      {/* Current Location Marker */}
-      {currentLocation && (
-        <View style={styles.currentLocationContainer}>
-          <Text style={styles.currentLocationText}>📍 Current Location</Text>
-        </View>
-      )}
 
       {/* Floating Title */}
       <View style={styles.titleContainer}>
@@ -505,21 +481,6 @@ const styles = StyleSheet.create({
   },
   map: {
     flex: 1,
-  },
-  currentLocationContainer: {
-    position: "absolute",
-    top: 60,
-    right: 20,
-    backgroundColor: "rgba(0, 122, 255, 0.9)",
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 20,
-    zIndex: 5,
-  },
-  currentLocationText: {
-    color: "white",
-    fontSize: 12,
-    fontWeight: "600",
   },
   titleContainer: {
     position: "absolute",

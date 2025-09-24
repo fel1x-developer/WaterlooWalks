@@ -82,6 +82,8 @@ export default function WATMapView({
       style={[styles.map, style]}
       initialRegion={UW_CAMPUS_REGION}
       mapType={mapType}
+      showsUserLocation={true}
+      showsMyLocationButton={true}
     >
       {basePolylines.map((polyline) => (
         <Polyline

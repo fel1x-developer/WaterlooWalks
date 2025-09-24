@@ -1,6 +1,5 @@
 import { render, fireEvent, waitFor } from "@testing-library/react-native";
 import { Alert, Platform, ActionSheetIOS } from "react-native";
-import * as Location from "expo-location";
 
 // Mock expo-location
 jest.mock("expo-location", () => ({
@@ -162,12 +161,6 @@ import Index from "../../app/index";
 describe("Index screen", () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    (Location.requestForegroundPermissionsAsync as jest.Mock).mockResolvedValue(
-      { status: "granted" },
-    );
-    (Location.getCurrentPositionAsync as jest.Mock).mockResolvedValue({
-      coords: { latitude: 43.4723, longitude: -80.5422 },
-    });
   });
 
   it("should render main screen elements", () => {
@@ -183,20 +176,6 @@ describe("Index screen", () => {
 
     await waitFor(() => findByText("📍 Current Location"), {
       timeout: 3000,
-    });
-  });
-
-  it("should handle location permission denied (covers lines 80-81)", async () => {
-    (Location.requestForegroundPermissionsAsync as jest.Mock).mockResolvedValue(
-      { status: "denied" },
-    );
-
-    render(<Index />);
-
-    await waitFor(() => {
-      expect(console.log).toHaveBeenCalledWith(
-        "Permission to access location was denied",
-      );
     });
   });
 
@@ -405,13 +384,6 @@ describe("Index screen", () => {
   it("should not show current location when location fails", async () => {
     // Reset mocks for this test - simulate component where location simply doesn't load
     jest.clearAllMocks();
-    (Location.requestForegroundPermissionsAsync as jest.Mock).mockResolvedValue(
-      { status: "granted" },
-    );
-    (Location.getCurrentPositionAsync as jest.Mock).mockImplementation(() => {
-      // Don't resolve or reject - simulate hanging/timeout
-      return new Promise(() => {});
-    });
 
     const { queryByText } = render(<Index />);
 
